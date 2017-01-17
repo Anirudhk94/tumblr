@@ -3,6 +3,17 @@
 
 	<%= form_for :post, url: posts_path do |f| %>
 	<div id="content">
+	<% if @post.errors.any? %>
+	  <div id="erroes">
+	  	<h2><%=pluralize(@post.errors.count, "error") %> stopped this from saving</h2>
+	  	<ul>
+	  		<% @post.errors.full_messages.each do |msg| %>
+	  			<li><%= msg %></li>
+	  		<% end %>
+	  	</ul>
+	  </div>
+	<% end %>
+
 	  <p>
 	  	<%= f.label :title %><br/>
 	  	<%= f.text_field :title %>

@@ -26,8 +26,6 @@
 		<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}%>	
 	</button>
 
-	<p class="body">
-		<%= simple_format(@post.body) %>
-	</p>
-
+		<%= simple_format(@post.body, class: 'body')  %>
+		
 </div>

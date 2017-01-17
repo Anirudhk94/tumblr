@@ -7,7 +7,17 @@
 		Submitted <%= time_ago_in_words(@post.created_at) %> ago
 	</p>
 
+	<button class="button" style="color: #529FCD;
+								  border: 1.5px solid #529FCD;
+								  margin-top: 20px;
+								  float: right;
+								  margin-top: -102px;
+								  font-size: 14px;">
+		<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}%>	
+	</button>
+
 	<p class="body">
 		<%= simple_format(@post.body) %>
 	</p>
+
 </div>

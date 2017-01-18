@@ -8,34 +8,14 @@
 		<%= link_to " Update |", edit_post_path(@post)%>
 		<%= link_to " Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}%>		
 	</p>
+	
+	<%= simple_format(@post.body, class: 'body')  %>
 
-<!-- 	<p class="date_and_author">
-		<%= link_to " Update |", edit_post_path(@post)%>	
-	</p>
-
-	<p class="date_and_author">
-		<%= link_to " Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}%>	
-	</p> -->
-
-<!-- 	<button class="button" style="color: #529FCD;
-								  border: 1.5px solid #529FCD;
-								  margin-top: 20px;
-								  float: right;
-								  margin-top: -95px;
-								  font-size: 14px;
-								  margin-right: 122px;">
-		<%= link_to "Update", edit_post_path(@post)%>	
-	</button>
-
-	<button class="button" style="color: #529FCD;
-								  border: 1.5px solid #529FCD;
-								  margin-top: 20px;
-								  float: right;
-								  margin-top: -95px;
-								  font-size: 14px;">
-		<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"}%>	
-	</button> -->
-
-		<%= simple_format(@post.body, class: 'body')  %>
+	<div id="comments">
+		<h3><%= pluralize(@post.comments.count, "Comment") %></h3>
+		<%= render @post.comments %>
+		<h4>Join discussion</h4>
+		<%= render "comments/form" %>
+	</div>
 		
 </div>

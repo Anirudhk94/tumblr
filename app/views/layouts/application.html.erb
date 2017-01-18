@@ -17,8 +17,9 @@
 	  		<li><%= link_to "Posts", root_path%></li>
 	  		<li><%= link_to "About", about_path%></li>
 	  	</ul>
-
-	  	<p class="sign_in"><%= link_to "User Login", new_user_session_path %></p>
+	  	<% unless user_signed_in? %>
+	  		<p class="sign_in"><%= link_to "User Login", new_user_session_path %></p>
+	  	<% end %>	
 	  </div>
 
 	  <div id="main_content">
@@ -30,10 +31,13 @@
 	  		<% else %>
 	  			<p style="margin-left: -37px;"><%= link_to "< Back to Post Feed", root_path %></p>
 	  		<% end %>
+
+	  		<%if user_signed_in? %>
 	  			<div class="buttons">
 		  			<button class="button"><%=link_to "Make Post", new_post_path %></button>
-		  			<button class="button"><%=link_to "Log Out", destroy_user_session_path, method: :delete %></button>
+		  			<button class="button"><%=link_to "Sign Out", destroy_user_session_path, method: :delete %></button>
 	  			</div>
+	  		<% end %>
 	  		</div>
 	  		<div style="color:#f97070">
 		  		<p class="notice"><%= notice %></p>

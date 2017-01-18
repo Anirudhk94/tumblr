@@ -3,6 +3,7 @@
 		<%= @post.title %>
 	</h1>
 
+
 	<p class="date_and_author">
 		Submitted <%= time_ago_in_words(@post.created_at) %> ago |
 		<%= link_to " Update |", edit_post_path(@post)%>

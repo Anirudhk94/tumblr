@@ -8,11 +8,11 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		@post = Post.new
+		@post = current_user.posts.build
 	end
 
 	def create
-		@post = Post.new(post_params)
+		@post = current_user.posts.build(post_params)
 		if @post.save
 			redirect_to @post
 		else
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		
+
 	end
 
 	def destroy
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 		end
 
 		def post_params
-			@post = params.require(:post).permit(:title, :body)	
+			params.require(:post).permit(:title, :body)	
 		end
 
 end
